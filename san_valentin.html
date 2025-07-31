@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>San Valentín - GrafikLand</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #fff; }
+    h1 { color: crimson; }
+    .descripcion { font-size: 1.1em; margin-bottom: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+    .producto { border: 1px solid #ccc; padding: 10px; text-align: center; border-radius: 10px; }
+    .producto img { width: 100%; height: auto; border-radius: 8px; }
+    .btn { margin-top: 10px; padding: 8px 12px; background: crimson; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .total { font-size: 1.2em; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>Temporada San Valentín</h1>
+  <div class="descripcion">
+    Descubre los diseños románticos para celebrar el amor con estilo. Elige tus playeras favoritas.
+  </div>
+
+  <form id="pedidoForm">
+    <div class="grid">
+      <!-- Producto 1 -->
+      <div class="producto">
+        <img src="san_valentin1.jpg" alt="Modelo 1">
+        <p>Modelo San Valentín 1</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 1"> Seleccionar</label>
+      </div>
+      <!-- Repite hasta 10 modelos -->
+      <!-- Producto 2 -->
+      <div class="producto">
+        <img src="san_valentin2.jpg" alt="Modelo 2">
+        <p>Modelo San Valentín 2</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 2"> Seleccionar</label>
+      </div>
+      <!-- Producto 3 -->
+      <div class="producto">
+        <img src="san_valentin3.jpg" alt="Modelo 3">
+        <p>Modelo San Valentín 3</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 3"> Seleccionar</label>
+      </div>
+       <!-- Producto 4 -->
+      <div class="producto">
+        <img src="san_valentin4.jpg" alt="Modelo 4">
+        <p>Modelo San Valentín 4</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 4"> Seleccionar</label>
+      </div>
+       <!-- Producto 5 -->
+      <div class="producto">
+        <img src="san_valentin5.jpg" alt="Modelo 5">
+        <p>Modelo San Valentín 5</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 5"> Seleccionar</label>
+      </div>
+      <!-- Producto 6-->
+      <div class="producto">
+        <img src="san_valentin6.jpg" alt="Modelo 6">
+        <p>Modelo San Valentín 6</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 6"> Seleccionar</label>
+      </div>
+      <!-- Producto 7 -->
+      <div class="producto">
+        <img src="san_valentin7.jpg" alt="Modelo 7">
+        <p>Modelo San Valentín 7</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 7"> Seleccionar</label>
+      </div>
+      <!-- Producto 8 -->
+      <div class="producto">
+        <img src="san_valentin8.jpg" alt="Modelo 8">
+        <p>Modelo San Valentín 8</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 8"> Seleccionar</label>
+      </div>
+      <!-- Producto 9 -->
+      <div class="producto">
+        <img src="san_valentin9.jpg" alt="Modelo 9">
+        <p>Modelo San Valentín 9</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 9"> Seleccionar</label>
+      </div>
+       <!-- Producto 10 -->
+      <div class="producto">
+        <img src="san_valentin10.jpg" alt="Modelo 10">
+        <p>Modelo San Valentín 10</p>
+        <label><input type="checkbox" name="producto" value="Modelo San Valentín 10"> Seleccionar</label>
+      </div>   
+      <!-- ... hasta el producto 10 -->
+    </div>
+
+    <p class="total">Precio por playera: $250 MXN</p>
+    <button type="submit" class="btn">Enviar Pedido por WhatsApp</button>
+  </form>
+
+  <script>
+    document.getElementById("pedidoForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const seleccionados = Array.from(document.querySelectorAll("input[name='producto']:checked"))
+        .map(el => el.value);
+      if (seleccionados.length === 0) {
+        alert("Selecciona al menos un producto.");
+        return;
+      }
+      const total = seleccionados.length * 250;
+      const mensaje = `Hola, me gustaría pedir los siguientes modelos de la temporada San Valentín:\n\n` +
+                      seleccionados.map(m => `- ${m}`).join("\n") +
+                      `\n\nTotal: $${total} MXN`;
+      const numero = "2284945696";
+      const url = `https://wa.me/52${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    });
+  </script>
+
+</body>
+</html>
